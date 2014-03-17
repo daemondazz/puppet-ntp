@@ -1,0 +1,29 @@
+
+# By default, do not allow any commands to be run against this server
+restrict -4 default nomodify notrap noquery kod limited
+restrict -6 default nomodify notrap noquery kod limited
+# Except from localhost
+restrict 127.0.0.1
+restrict ::1
+<% if @restrict != [] -%>
+# And our trusted hosts (monitoring servers, etc)
+<% @restrict.flatten.each do |restrict| -%>
+restrict <%= restrict %>
+<% end -%>
+<% end -%>
+
+<% [@servers].flatten.each do |server| -%>
+server <%= server %><% if @preferred_servers.include?(server) -%> prefer<% end %> iburst
+<% end -%>
+
+# Undisciplined Local Clock. This is a fake driver intended for backup
+# and when no outside source of synchronized time is available. 
+server	127.127.1.0 
+fudge	127.127.1.0 stratum 10
+restrict 127.127.1.0
+
+# Driftfile
+driftfile <%= @driftfile %>
+
+# Keyfile
+keys <%= @keysfile %>
