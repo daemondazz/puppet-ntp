@@ -11,25 +11,25 @@ Currently only tested on Debian/Ubuntu and RedHat/CentOS based servers.
 
    Object that performs the configuration of the NTP service on the node. Supports the following options:
 
-   * `servers` (array)
+      * `servers` (array)
 
-       The list of upstream NTP servers for the node (generates server lines)
+          The list of upstream NTP servers for the node (generates server lines)
 
-   * `restrict` (array)
+      * `restrict` (array)
 
-       The list of trusted clients for this node (generates restrict lines)
+          The list of trusted clients for this node (generates restrict lines)
 
-   * `keysfile` (string)
+      * `keysfile` (string)
 
-       The location of the key file for this node (generates the keysfile line)
+          The location of the key file for this node (generates the keysfile line)
 
-   * `driftfile` (string)
+      * `driftfile` (string)
 
-       The location of the drift file for this node (generates the driftfile line)
+          The location of the drift file for this node (generates the driftfile line)
 
-   * `preferred_servers` (array)
+      * `preferred_servers` (array)
 
-       A list of the preferred servers for this node (Adds the 'prefer' keyword to servers in the `servers` list)
+          A list of the preferred servers for this node (Adds the 'prefer' keyword to servers in the `servers` list)
 
 ## Examples
 
