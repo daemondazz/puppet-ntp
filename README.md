@@ -9,27 +9,27 @@ Currently only tested on Debian/Ubuntu and RedHat/CentOS based servers.
 
 1. `ntp`
 
-    Object that performs the configuration of the NTP service on the node. Supports the following options:
+   Object that performs the configuration of the NTP service on the node. Supports the following options:
 
-    * `servers` (array)
+   * `servers` (array)
 
-        The list of upstream NTP servers for the node (generates server lines)
+       The list of upstream NTP servers for the node (generates server lines)
 
-    * `restrict` (array)
+   * `restrict` (array)
 
-        The list of trusted clients for this node (generates restrict lines)
+       The list of trusted clients for this node (generates restrict lines)
 
-    * `keysfile` (string)
+   * `keysfile` (string)
 
-        The location of the key file for this node (generates the keysfile line)
+       The location of the key file for this node (generates the keysfile line)
 
-    * `driftfile` (string)
+   * `driftfile` (string)
 
-        The location of the drift file for this node (generates the driftfile line)
+       The location of the drift file for this node (generates the driftfile line)
 
-    * `preferred_servers` (array)
+   * `preferred_servers` (array)
 
-        A list of the preferred servers for this node (Adds the 'prefer' keyword to servers in the `servers` list)
+       A list of the preferred servers for this node (Adds the 'prefer' keyword to servers in the `servers` list)
 
 ## Examples
 
@@ -39,7 +39,12 @@ This snippet includes the NTP class into the default node, which is inherited by
 
 
     node default {
-        $ntp_service_servers = [ 'ntp0.cs.mu.oz.au', 'ntp1.cs.mu.oz.au', 'clock.via.net', 'time.nist.gov', 'ntp.on.net', 'time.deakin.edu.au' ]
+        $ntp_service_servers = [ 'ntp0.cs.mu.oz.au',
+                                 'ntp1.cs.mu.oz.au',
+                                 'clock.via.net',
+                                 'time.nist.gov',
+                                 'ntp.on.net',
+                                 'time.deakin.edu.au' ]
         ntp { "ntp_${fqdn}" :
             servers   => [ 'ntp1.afoyi.com', 'ntp2.afoyi.com', 'ntp3.afoyi.com' ],
             restrict  => [ '172.17.1.2', '103.1.212.18', '10.254.254.5', '2403:4200:403:2::5' ],
