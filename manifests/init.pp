@@ -42,7 +42,7 @@ define ntp ($servers,
                 owner   => 'root',
                 group   => 'root',
                 require => Package['ntp'],
-                path    => inline_template('<%= File.basename(@keysfile) %>'),
+                path    => inline_template('<%= File.dirname(@keysfile) %>'),
             }
             file { 'ntp_keysfile':
                 ensure  => present,
@@ -59,7 +59,7 @@ define ntp ($servers,
                 owner   => 'ntp',
                 group   => 'ntp',
                 require => Package['ntp'],
-                path    => inline_template('<%= File.basename(@driftfile) %>'),
+                path    => inline_template('<%= File.dirname(@driftfile) %>'),
             }
             file { 'ntp_driftfile':
                 ensure  => present,
