@@ -8,13 +8,13 @@ define ntp ($servers,
 
     package { 'ntp' :
         ensure => $::is_virtual ? {
-            true     => absent,
+            'true'   => absent,
             default  => latest
         }
     }
 
     case $::is_virtual {
-        false: {
+        'false': {
             service { 'ntpd' :
                 name      => $::osfamily ? {
                     RedHat  => 'ntpd',
